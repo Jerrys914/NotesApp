@@ -9,7 +9,7 @@ angular.module('notes-app.search', [])
         },
         data: data
     }).then(function(response) {
-        console.log('RESPONSE: ', response.data);
+       // console.log('RESPONSE: ', response.data);
         // notes = response.data;
         data.notes = response.data;
         data.username = '';
@@ -23,7 +23,7 @@ angular.module('notes-app.search', [])
     //  console.log('searchUserNoteFactory.notes: ', searchUserNoteFactory.notes)
       searchUserNoteFactory($scope.data).then(function(resp){
         $scope.data.notes = resp.data;
-        console.log('inside promise ', $scope.data.notes)
+       // console.log('inside promise ', $scope.data.notes)
       });
     };
     $scope.data = {};

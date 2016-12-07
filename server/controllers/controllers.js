@@ -8,7 +8,7 @@ module.exports = {
       var token = req.headers['x-access-token'];
       console.log('TOKEN!!!!!!!!!!!!!!!!!!: ', token)
       if (!token || token === undefined) {
-        console.log("HERE!!!!!!!!!!!!!!!!!!!!")
+       // console.log("HERE!!!!!!!!!!!!!!!!!!!!")
         res.redirect('/signin');
       } else {
         var user = jwt.decode(token, 'secret');
