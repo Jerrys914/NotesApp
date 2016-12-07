@@ -1,16 +1,15 @@
 <div id='container' ng-controller="searchUserNoteCtrl">
   <h2>Search Users Notes</h2>
-  <form ng-submit="data.sendData(data)">
+  <form ng-submit="data.sendData()">
     <div>
       <label for="name">Username:</label>
       <input id="username" type="text" name="username" ng-model='data.username'>
-    </div>
       <button type="submit" value="Enter">ENTER</button>
     </div>
   </form>
-</div>
-<div ng-repeat="note in data.notes">
-  <tr>
-    <td>{{note.name}}</td>
-  </tr>
+  <div ng-repeat="note in data.notes">
+    <tr>
+      <td>{{note.name }}</td>
+    </tr>
+  </div>
 </div>

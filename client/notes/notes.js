@@ -4,7 +4,7 @@ angular.module('notes-app.notes', [])
       mothod: "GET",
       url: "api/notes"
     }).then(function success(response) {
-      console.log('RESPONSE: ', response.data);
+    //  console.log('RESPONSE: ', response);
       $scope.data = response.data
     });
   })
@@ -18,7 +18,7 @@ angular.module('notes-app.notes', [])
           },
           data: data
       }).then(function(response) {
-          console.log('RESPONSE: ', response);
+          //console.log('RESPONSE: ', response);
           data.noteName = '';
           data.noteData = '';
           return response;

@@ -25,7 +25,12 @@ angular.module('notes-app.auth', [])
   };
 
   var isAuth = function () {
-    console.log('localStorage',$window.localStorage.getItem('com.notes-app'));
+    //console.log('localStorage',$window.localStorage.getItem('com.notes-app'));
+    if($window.localStorage.getItem('com.notes-app') === undefined) {
+      console.log('not a user')
+      signout();
+      res.redirect('#signout')
+    } 
     return !!$window.localStorage.getItem('com.notes-app');
   };
 
@@ -48,7 +53,7 @@ angular.module('notes-app.auth', [])
   $scope.signin = function () {
     Auth.signin($scope.user)
       .then(function (token) {
-        console.log("AUTHCTRL TOKEN: ", token)
+       // console.log("AUTHCTRL TOKEN: ", token)
         $window.localStorage.setItem('com.notes-app', token);
         $location.path('/viewNotes');
       })

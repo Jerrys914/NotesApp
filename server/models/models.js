@@ -6,6 +6,7 @@ module.exports = {
     getAll: function(userId, callback) {
       var queryString = 'SELECT * FROM Notes WHERE id_Users = ?';
       db.query(queryString, userId, function(err, results) {
+        console.log('GETALL: id', userId)
         console.log('Getting All Notes For User: ', results);
         callback(err, results);
       });
