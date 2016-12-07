@@ -6,14 +6,17 @@ module.exports = {
   notes : {
     getAll: function(req, res) {
       var token = req.headers['x-access-token'];
-      if (!token) {
-        res.send('No token');
+      console.log('TOKEN!!!!!!!!!!!!!!!!!!: ', token)
+      if (!token || token === undefined) {
+        console.log("HERE!!!!!!!!!!!!!!!!!!!!")
+        res.redirect('/signin');
       } else {
         var user = jwt.decode(token, 'secret');
         console.log("TOKEN USERNAME: ", user);
         models.users.getId(user, function(err, resultUser) {
+          console.log('resultUser: ', resultUser)
           var id= resultUser[0].id;
-          models.notes.getAll(/*UserID->*/id, function(err, results) {
+          models.notes.getAll(id, function(err, results) {
             console.log('GET NOTES: CONTROLLER RESULTS: ', results);
             res.send(results);
         });
@@ -24,6 +27,7 @@ module.exports = {
     getPublic:function(req, res) {
       var userId;
       models.users.getId(req.body.username, function(err, results) {
+        console.log('line 78: ', results)
         userId = results[0].id;
         models.notes.getPublic(userId, function(err, results) {
           console.log('USER ID: ', userId);
@@ -34,7 +38,7 @@ module.exports = {
     },
     post: function(req, res) {var token = req.headers['x-access-token'];
       if (!token) {
-        next(new Error('No token'));
+        res.send('No token');
       } else {
         var user = jwt.decode(token, 'secret');
         console.log("TOKEN USERNAME: ", user);
@@ -72,8 +76,9 @@ module.exports = {
       models.users.getUser(params, function(err, results) {
         if(err) { console.log('ERROR USER SIGNIN CONTROLLER: ', err); }
         console.log('USERS CONTROLLER RESULTS: ', results);
-        if(results.length === 0) {
-          res.send('Wrong Username or Password');
+        if(!results) {
+          console.log('Wrong Username or Password')
+          res.redirect('/');
         } else {
           var token = jwt.encode(user, 'secret');
           console.log("TOKEN:  ", token)
