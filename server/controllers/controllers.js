@@ -44,6 +44,9 @@ module.exports = {
         console.log("TOKEN USERNAME: ", user);
         models.users.getId(user, function(err, resultUser) {
           var id = resultUser[0].id;
+          if(!req.body.noteData) {
+            req.body.noteData = '';
+          }
           var params = [req.body.noteName, id, req.body.isPrivate, req.body.noteData];
           models.notes.post(params, function(err, results) {
             if(err) { console.log("NOTE POSTING ERROR: ", err); }

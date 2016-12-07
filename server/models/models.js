@@ -19,6 +19,7 @@ module.exports = {
       });
     },
     post: function(params, callback) {
+      
       var queryString = 'INSERT INTO Notes(name, id_Users, isPrivate, data) VALUES (?, ?, ?, ?);';
       db.query(queryString, params, function(err, results) {
         console.log('TRYING TO POST NOTE');

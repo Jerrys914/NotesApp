@@ -1,8 +1,10 @@
 <div id='container' ng-controller="viewNotesCtrl">
-  <h2>View Notes</h2>
-  <div ng-repeat="note in data">
-    <tr>
+  <h2>Notes</h2>
+  <div>
+  <table style="margin: 20px" ng-repeat="note in data">
+    <tr border='1'>
       <td class='name'>{{note.name}}</td>
     </tr>
+    </table>
 </div>
 </div>

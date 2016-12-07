@@ -1,26 +1,27 @@
 <div id='container' ng-controller="newNoteCtrl">
-  <h2>Enter Password</h2>
+  <!-- <h2>Create Note</h2> -->
+  <center>
+  <h2>Create Note</h2>
     <form ng-submit="data.sendData(data)">
       <div>
         <label for="name">Note Name:</label>
         <input id="noteName" type="text" name="noteName" ng-model='data.noteName'>
       </div>
-      <div>
+<!--       <div>
         <label for="noteData">Note Data:</label>
-        <input id="noteData" type="text" name="noteDa ta" ng-model='data.noteData'>
-      </div>
+        <input id="noteData" type="text" name="noteDa ta" ng-model='data.noteData' style="height: 300px;">
+      </div> -->
       <div>
-          <label>
-            <input type="radio" ng-model="data.isPrivate" value="false">
-            Public
-          </label>
-          <label>
-            <input type="radio" ng-model="data.isPrivate" value="true">
-            Private
-          </label>
+          <label for='public'>Public: </label>
+            <input type="radio" name="public" ng-model="data.isPrivate" value="false"/>
+          <label for="private">Private: </label>
+            <input type="radio" name="private" ng-model="data.isPrivate" value="true"/>
+            
+
         <div>
           <button type="submit" value="Enter">ENTER</button>
         </div>
       </div>
     </form>
+  </center>
 </div>
