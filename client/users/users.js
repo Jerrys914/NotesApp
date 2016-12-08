@@ -26,7 +26,7 @@ angular.module('notes-app.auth', [])
 
   var isAuth = function () {
     //console.log('localStorage',$window.localStorage.getItem('com.notes-app'));
-    if($window.localStorage.getItem('com.notes-app') === undefined) {
+    if($window.localStorage.getItem('com.notes-app') === undefined || !$window.localStorage.getItem('com.notes-app')) {
       console.log('not a user')
       signout();
       res.redirect('#signout')

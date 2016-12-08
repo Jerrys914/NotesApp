@@ -3,7 +3,7 @@ var controllers = require('./controllers/controllers.js');
 var path = require('path');
 var utils = require('./utilities.js');
 
-
+// a user will never hit this page.. gets rerouted on front end to /#/ which is equivelent to #viewNotes
 router.get('/', function(req, res) {
   res.sendFile(path.join(__dirname, '../client/index.html'));
 });
